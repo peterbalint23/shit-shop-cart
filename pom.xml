@@ -11,6 +11,7 @@
     <name>shit-shop-cart</name>
     <description>Microservice project</description>
 
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
