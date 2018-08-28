@@ -23,7 +23,7 @@ public class CartController {
         return obj;
     }
 
-    @PutMapping("/cart/{user_id}/{product_id}")
+    @PostMapping("/cart/{user_id}/{product_id}")
     public void addToCart(@PathVariable("user_id") long user_id, @PathVariable("product_id") long product_id) {
         cartService.addToCart(user_id, product_id);
     }
