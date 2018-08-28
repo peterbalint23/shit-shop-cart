@@ -11,7 +11,7 @@ public class CartController {
 
 
 
-        @GetMapping("/car")
+        @GetMapping("/cart")
         public JSONObject getUser(){
             JSONObject obj = new JSONObject();
             obj.put("name", "Szabolcs");
