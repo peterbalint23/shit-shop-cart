@@ -1,5 +1,6 @@
 package com.codecool.shitshopcart.controller;
 
+import com.codecool.shitshopcart.repository.CartRepository;
 import com.codecool.shitshopcart.service.CartService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ public class CartController {
 
     @Autowired
     private CartService cartService;
+
+
 
     @GetMapping("/cart")
     public JSONObject getUser() {

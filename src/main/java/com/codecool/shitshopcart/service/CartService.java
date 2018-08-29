@@ -16,10 +16,13 @@ public class CartService {
 
     @Transactional
     public void addToCart(int userId, int productId){
+        if(cartRepository.findByUserId(userId) == null){
+            cartRepository.save(new Cart(userId));
+        }
         Cart cart = cartRepository.findByUserId(userId);
-        cart.getProducts().add(productId);
-        cartRepository.save(cart);
-    }
+
+        cart.addProduct(productId);
+        cartRepository.save(cart);}
 
     @Transactional
     public List<Integer> findCartByUserId(int userId){
