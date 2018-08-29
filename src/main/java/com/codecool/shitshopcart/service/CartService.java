@@ -15,16 +15,16 @@ public class CartService {
     private CartRepository cartRepository;
 
     @Transactional
-    public void addToCart(long user_id, long product_id){
-        Cart cart = cartRepository.findByUser_id(user_id);
-        cart.getProducts().add(product_id);
+    public void addToCart(int userId, int productId){
+        Cart cart = cartRepository.findByUserId(userId);
+        cart.getProducts().add(productId);
         cartRepository.save(cart);
     }
 
     @Transactional
-    public List<Long> findCartByUserId(long user_id){
-        Cart cart = cartRepository.findByUser_id(user_id);
-        List<Long> products = cart.getProducts();
+    public List<Integer> findCartByUserId(int userId){
+        Cart cart = cartRepository.findByUserId(userId);
+        List<Integer> products = cart.getProducts();
         return products;
     }
 }
