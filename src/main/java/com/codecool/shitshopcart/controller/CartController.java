@@ -18,7 +18,9 @@ public class CartController {
     @GetMapping("/cart")
     public JSONObject getUser() {
         JSONObject obj = new JSONObject();
-        obj.put("name", "Szabolcs");
+        int array[] = {2,5};
+        obj.put("userId", "1");
+        obj.put("carList", array);
 
         return obj;
     }
@@ -34,6 +36,6 @@ public class CartController {
         System.out.println(cartListObject.put("cartList", cartService.findCartByUserId(userId)));
         cartListObject.put("userId", userId);
         cartListObject.put("cartList", cartService.findCartByUserId(userId));
-        return "{\"userId\":1,\"cartList\":[2,5]}";
+        return cartListObject;
     }
 }
