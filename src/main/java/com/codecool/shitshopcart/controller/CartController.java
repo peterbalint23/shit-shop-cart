@@ -1,6 +1,5 @@
 package com.codecool.shitshopcart.controller;
 
-import com.codecool.shitshopcart.repository.CartRepository;
 import com.codecool.shitshopcart.service.CartService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +24,22 @@ public class CartController {
         return obj;
     }
 
-    @PostMapping("/cart/{user_id}/{productId}")
-    public void addToCart(@PathVariable("user_id") int userId, @PathVariable("productId") int productId) {
+    @PostMapping("/cart/{userId}/{productId}")
+    public void addToCart(@PathVariable("userId") int userId, @PathVariable("productId") int productId) {
         cartService.addToCart(userId, productId);
     }
 
     @GetMapping("/cart/{userId}")
-    public Object getCartByUser_id(@PathVariable("userId") int userId){
+    public Object getCartByUserId(@PathVariable("userId") int userId){
         JSONObject cartListObject = new JSONObject();
         System.out.println(cartListObject.put("cartList", cartService.findCartByUserId(userId)));
         cartListObject.put("userId", userId);
         cartListObject.put("cartList", cartService.findCartByUserId(userId));
         return cartListObject;
+    }
+
+    @DeleteMapping("cart/{userId}/{productId}")
+    public void deleteFromCart(@PathVariable("userId") int userId, @PathVariable("productId") int productId){
+        cartService.deleteFromCart(userId, productId);
     }
 }

@@ -30,5 +30,13 @@ public class CartService {
         List<Integer> products = cart.getProducts();
         return products;
     }
+
+    @Transactional
+    public void deleteFromCart(int userId, int productId){
+        Cart cart = cartRepository.findByUserId(userId);
+
+        cart.deleteProduct(productId);
+        cartRepository.save(cart);
+    }
 }
 
