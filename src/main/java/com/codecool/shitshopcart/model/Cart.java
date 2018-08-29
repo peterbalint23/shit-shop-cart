@@ -9,43 +9,43 @@ public class Cart {
 
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
-    private long user_id;
+    private int userId;
 
     @ElementCollection
     @CollectionTable(name = "Products")
-    private List<Long> products;
+    private List<Integer> products;
 
     public Cart() {
     }
 
-    public Cart(long user_id, List<Long> products) {
-        this.user_id = user_id;
+    public Cart(int userId, List<Integer> products) {
+        this.userId = userId;
         this.products = products;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public List<Long> getProducts() {
+    public List<Integer> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Long> products) {
+    public void setProducts(List<Integer> products) {
         this.products = products;
     }
 }
