@@ -58,6 +58,15 @@ public class Cart {
         products.add(productId);
     }
 
+    public void deleteProduct(int productId){
+        for (int i = 0; i < products.size(); i++) {
+            if(products.get(i) == productId){
+                products.remove(i);
+                break;
+            }
+        }
+    }
+
 
     @Override
     public String toString() {
