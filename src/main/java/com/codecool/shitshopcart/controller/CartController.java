@@ -32,6 +32,8 @@ public class CartController {
     public Object getCartByUser_id(@PathVariable("userId") int userId){
         JSONObject cartListObject = new JSONObject();
         System.out.println(cartListObject.put("cartList", cartService.findCartByUserId(userId)));
-        return cartListObject.put("cartList", cartService.findCartByUserId(userId));
+        cartListObject.put("userId", userId);
+        cartListObject.put("cartList", cartService.findCartByUserId(userId));
+        return "{\"userId\":1,\"cartList\":[2,5]}";
     }
 }
