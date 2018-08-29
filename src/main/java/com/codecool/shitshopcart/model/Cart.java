@@ -2,6 +2,7 @@ package com.codecool.shitshopcart.model;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,6 +27,11 @@ public class Cart {
         this.products = products;
     }
 
+    public Cart(long userId) {
+        this.userId = userId;
+        this.products = new ArrayList<>();
+    }
+
     public long getId() {
         return id;
     }
@@ -43,11 +49,21 @@ public class Cart {
     }
 
     public List<Long> getProducts() {
+
         return products;
     }
 
-    public void setProducts(List<Long> products) {
-        this.products = products;
+    public void addProduct(long productId) {
+        products.add(productId);
     }
 
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", products=" + products +
+                '}';
+    }
 }

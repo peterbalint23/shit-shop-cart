@@ -13,12 +13,17 @@ public class CartService {
     private CartRepository cartRepository;
 
     @Transactional
-    public void addToCart(long user_id, long product_id){
-        Cart cart = cartRepository.findByUserId(user_id);
-        cart.getProducts().add(product_id);
+    public void addToCart(long userId, long productId){
+        if(cartRepository.findByUserId(userId) == null){
+            cartRepository.save(new Cart(userId));
+        }
+        Cart cart = cartRepository.findByUserId(userId);
+
+        cart.addProduct(productId);
         cartRepository.save(cart);
 
     }
+
 
 
 }
