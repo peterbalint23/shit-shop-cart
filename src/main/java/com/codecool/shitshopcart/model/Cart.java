@@ -5,13 +5,14 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "Cart")
 public class Cart {
 
     @Id
     @GeneratedValue
     private long id;
 
-    private long user_id;
+    private long userId;
 
     @ElementCollection
     @CollectionTable(name = "Products")
@@ -20,8 +21,8 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(long user_id, List<Long> products) {
-        this.user_id = user_id;
+    public Cart(long userId, List<Long> products) {
+        this.userId = userId;
         this.products = products;
     }
 
@@ -33,12 +34,12 @@ public class Cart {
         this.id = id;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public List<Long> getProducts() {
@@ -48,4 +49,5 @@ public class Cart {
     public void setProducts(List<Long> products) {
         this.products = products;
     }
+
 }
