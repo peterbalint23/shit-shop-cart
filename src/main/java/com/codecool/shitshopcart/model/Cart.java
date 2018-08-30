@@ -69,6 +69,11 @@ public class Cart {
         }
     }
 
+    public void deleteCart(){
+        products.clear();
+    }
+
+
     @Override
     public String toString() {
         return "Cart{" +
