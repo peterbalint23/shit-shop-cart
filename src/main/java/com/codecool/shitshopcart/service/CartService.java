@@ -22,8 +22,11 @@ public class CartService {
         }
         Cart cart = cartRepository.findByUserId(userId);
 
-        cart.addProduct(productId);
-        cartRepository.save(cart);
+        if(!findCartByUserId(userId).contains(productId)){
+            cart.addProduct(productId);
+            cartRepository.save(cart);
+        }
+
     }
 
     @Transactional
