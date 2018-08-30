@@ -38,5 +38,13 @@ public class CartService {
         cart.deleteProduct(productId);
         cartRepository.save(cart);
     }
+
+    @Transactional
+    public void deleteCart(int userId){
+        Cart cart = cartRepository.findByUserId(userId);
+
+        cart.deleteCart();
+        cartRepository.save(cart);
+    }
 }
 

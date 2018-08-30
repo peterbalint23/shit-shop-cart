@@ -59,12 +59,18 @@ public class Cart {
     }
 
     public void deleteProduct(int productId){
-        for (int i = 0; i < products.size(); i++) {
-            if(products.get(i) == productId){
-                products.remove(i);
-                break;
+        if(products.contains(productId)) {
+            for (int i = 0; i < products.size(); i++) {
+                if (products.get(i) == productId) {
+                    products.remove(i);
+                    break;
+                }
             }
         }
+    }
+
+    public void deleteCart(){
+        products.clear();
     }
 
 
