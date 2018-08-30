@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @Service
@@ -45,9 +46,11 @@ public class CartService {
 
     @Transactional
     public void deleteCart(int userId) {
-        Cart cart = cartRepository.findByUserId(userId);
-        cart.deleteCart();
-        cartRepository.save(cart);
+        List<Integer> products = findCartByUserId(userId);
+        if (!products.isEmpty()){
+            products.clear();
+        }
+
     }
 }
 
