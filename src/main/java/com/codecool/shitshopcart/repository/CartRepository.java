@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface CartRepository extends JpaRepository <Cart, Integer> {
+public interface CartRepository extends JpaRepository<Cart, Integer> {
 
     Cart findByUserId(int userId);
 }
