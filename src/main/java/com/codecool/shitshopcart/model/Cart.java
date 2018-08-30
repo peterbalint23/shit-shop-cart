@@ -58,8 +58,8 @@ public class Cart {
         products.add(productId);
     }
 
-    public void deleteProduct(int productId){
-        if(products.contains(productId)) {
+    public void deleteProduct(int productId) {
+        if (products.contains(productId)) {
             for (int i = 0; i < products.size(); i++) {
                 if (products.get(i) == productId) {
                     products.remove(i);
@@ -69,7 +69,7 @@ public class Cart {
         }
     }
 
-    public void deleteCart(){
+    public void deleteCart() {
         products.clear();
     }
 

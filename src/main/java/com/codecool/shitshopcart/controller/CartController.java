@@ -13,16 +13,8 @@ public class CartController {
     private CartService cartService;
 
 
+    private static JSONObject jsonObject = new JSONObject();
 
-    @GetMapping("/cart")
-    public JSONObject getUser() {
-        JSONObject obj = new JSONObject();
-        int array[] = {2,5};
-        obj.put("userId", "1");
-        obj.put("carList", array);
-
-        return obj;
-    }
 
     @PostMapping("/cart/{userId}/{productId}")
     public void addToCart(@PathVariable("userId") int userId, @PathVariable("productId") int productId) {
@@ -30,21 +22,19 @@ public class CartController {
     }
 
     @GetMapping("/cart/{userId}")
-    public Object getCartByUserId(@PathVariable("userId") int userId){
-        JSONObject cartListObject = new JSONObject();
-        System.out.println(cartListObject.put("cartList", cartService.findCartByUserId(userId)));
-        cartListObject.put("userId", userId);
-        cartListObject.put("cartList", cartService.findCartByUserId(userId));
-        return cartListObject;
+    public Object getCartByUserId(@PathVariable("userId") int userId) {
+        jsonObject.put("userId", userId);
+        jsonObject.put("cartList", cartService.findCartByUserId(userId));
+        return jsonObject;
     }
 
     @DeleteMapping("cart/{userId}/{productId}")
-    public void deleteFromCart(@PathVariable("userId") int userId, @PathVariable("productId") int productId){
+    public void deleteFromCart(@PathVariable("userId") int userId, @PathVariable("productId") int productId) {
         cartService.deleteFromCart(userId, productId);
     }
 
     @DeleteMapping("/cart/{userId}/delete")
-    public void deleteCart(@PathVariable("userId") int userId){
+    public void deleteCart(@PathVariable("userId") int userId) {
         cartService.deleteCart(userId);
     }
 }
